@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="AutomatizacionAvanzada.jnlp">
+  <information>
+    <title>AutomatizacionAvanzada</title>
+    <vendor>NORE</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="AutomatizacionAvanzada.jar" size="139275" download="eager" />
+    <jar href="lib/3dEffect.jar" size="9208" download="eager" />
+    <jar href="lib/RXTXcomm.jar" size="60984" download="eager" />
+    <jar href="lib/Undecorator.jar" size="81614" download="eager" />
+    <jar href="lib/bluecove-2.1.0.jar" size="547156" download="eager" />
+    <jar href="lib/bluecove-2.1.1-SNAPSHOT.jar" size="663800" download="eager" />
+    <jar href="lib/controlsfx-8.20.8.jar" size="957666" download="eager" />
+    <jar href="lib/fontawesomefx-8.0.10.jar" size="108930" download="eager" />
+    <jar href="lib/guava-18.0.jar" size="2256213" download="eager" />
+    <jar href="lib/modbus4J.jar" size="109950" download="eager" />
+    <jar href="lib/openjfx-dialogs-1.0.2.jar" size="148557" download="eager" />
+    <jar href="lib/pistonCcontrol.jar" size="28818" download="eager" />
+    <jar href="lib/seroUtils.jar" size="395440" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="AutomatizacionAvanzada" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="automatizacionavanzada.Main"  name="AutomatizacionAvanzada" />
+  <update check="always"/>
+</jnlp>

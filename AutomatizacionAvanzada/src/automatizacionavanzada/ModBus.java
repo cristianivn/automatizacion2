@@ -38,7 +38,7 @@ public class ModBus implements Runnable {
     public final static int SLAVE_ADDRESS = 1;
 
     // Serial port baud rate
-    private final static int BAUD_RATE = 9600;
+    private final static int BAUD_RATE = 19200;
 
     private Crixus instance = null;
 

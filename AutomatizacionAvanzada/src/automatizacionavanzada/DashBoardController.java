@@ -91,11 +91,13 @@ public class DashBoardController implements Initializable {
         radioUno.setUserData("color1");
         radioDos.setToggleGroup(group);
         radioDos.setUserData("color2");
+        //roup.selectToggle(radioUno);
         group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 
             @Override
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                System.out.println(newValue.getUserData());
+                //System.out.println(newValue.getUserData());
+                System.out.println("listener activated");
                 if (oldValue != null) {
                     switch (oldValue.getUserData().toString()) {
                         case "color1":
@@ -120,6 +122,10 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private void setColor(ActionEvent event) {
+        persistColor();
+    }
+
+    public void persistColor() {
         Toggle toggle = group.getSelectedToggle();
         if (toggle != null) {
             System.out.println(toggle.getUserData());
@@ -151,6 +157,11 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private void start(ActionEvent event) {
+        startProccess();
+
+    }
+
+    public void startProccess() {
         if (number != 0 && group.getSelectedToggle() != null) {
             if (estadoStart == false) {
                 estadoStart = true;
@@ -165,7 +176,6 @@ public class DashBoardController implements Initializable {
         } else {
             System.out.println("inserta datos");
         }
-
     }
 
     public void stopProcces() {
@@ -181,6 +191,10 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private void testUltrasonic(ActionEvent event) {
+        testUltra();
+    }
+
+    public void testUltra() {
         try {
             Crixus.getInstance().getModbus().writeCommandThread(WritableCommands.END_READ, Boolean.TRUE);
         } catch (Exception e) {
@@ -242,6 +256,26 @@ public class DashBoardController implements Initializable {
 
     public Stopwatch getStopwatch() {
         return stopwatch;
+    }
+
+    public RadioButton getRadioUno() {
+        return radioUno;
+    }
+
+    public void setRadioUno(RadioButton radioUno) {
+        this.radioUno = radioUno;
+    }
+
+    public RadioButton getRadioDos() {
+        return radioDos;
+    }
+
+    public void setRadioDos(RadioButton radioDos) {
+        this.radioDos = radioDos;
+    }
+
+    public ToggleGroup getGroup() {
+        return group;
     }
 
 }

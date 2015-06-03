@@ -7,11 +7,8 @@
     <offline-allowed/>
   </information>
   <resources>
-    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
-  </resources>
-  <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="AutomatizacionAvanzada.jar" size="138623" download="eager" />
+    <jar href="AutomatizacionAvanzada.jar" size="139426" download="eager" />
     <jar href="lib/3dEffect.jar" size="9208" download="eager" />
     <jar href="lib/RXTXcomm.jar" size="60984" download="eager" />
     <jar href="lib/Undecorator.jar" size="81614" download="eager" />
@@ -26,7 +23,7 @@
     <jar href="lib/seroUtils.jar" size="395440" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="AutomatizacionAvanzada" >
-    <param name="requiredFXVersion" value="2.2+"/>
+    <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
   <jfx:javafx-desc  width="800" height="600" main-class="automatizacionavanzada.Main"  name="AutomatizacionAvanzada" />
   <update check="always"/>
