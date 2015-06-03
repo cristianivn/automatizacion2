@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="652.0" prefWidth="1225.0" style="-fx-background-color: white;" stylesheets="@Metro-UI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="automatizacionavanzada.DashBoardController">
+   <children>
+      <AnchorPane fx:id="paneTabel" layoutY="91.0" prefHeight="560.0" prefWidth="1225.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="91.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <LineChart fx:id="chart">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <padding>
+                        <Insets left="25.0" />
+                     </padding>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Color :" />
+                        <RadioButton fx:id="radioUno" mnemonicParsing="false" text="color 1" />
+                        <RadioButton fx:id="radioDos" mnemonicParsing="false" text="color 2" />
+                        <Button fx:id="changeColor" mnemonicParsing="false" onAction="#setColor" styleClass="btn" text="Change" />
+                        <Separator maxHeight="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="50.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Orden :" />
+                        <TextField fx:id="cantidad" />
+                        <Button fx:id="set" mnemonicParsing="false" onAction="#setQuantity" styleClass="btn" text="Set" />
+                        <Separator layoutX="294.0" layoutY="10.0" maxHeight="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="50.0" />
+                        <Button fx:id="startBtn" mnemonicParsing="false" onAction="#start" styleClass="btn" text="START" />
+                        <Button mnemonicParsing="false" onAction="#testUltrasonic" styleClass="btn" text="TEST" />
+                        <Text fx:id="boxCount" fill="#2b579a" strokeType="OUTSIDE" strokeWidth="0.0" text="Procesadas: 0">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Separator layoutY="89.0" prefHeight="0.0" prefWidth="1225.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Text fill="#2b579a" layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monitoreo">
+         <font>
+            <Font name="Segoe UI Semilight" size="48.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnNew" defaultButton="true" layoutX="1101.0" layoutY="46.0" mnemonicParsing="false" onAction="#aksiNew" prefHeight="27.0" prefWidth="108.0" styleClass="btn" text="Sign Out" />
+      <ImageView fx:id="imgLoad" fitHeight="33.0" fitWidth="40.0" layoutX="225.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@img/301.GIF" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="bar" layoutY="82.0" prefHeight="3.0" prefWidth="1225.0" progress="0.0" />
+   </children>
+</AnchorPane>

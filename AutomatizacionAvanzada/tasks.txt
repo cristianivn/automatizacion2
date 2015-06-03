@@ -1,0 +1,10 @@
+agrega stop
+init crixus in splash
+
+A0C0BDAF0CFE9A10
+
+
+- desactivar   END_READ en programa plc
+- prepara la grafica
+- preparar lo del arduino con ultrasonica
+- crear interfaz android
