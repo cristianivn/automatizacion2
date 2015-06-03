@@ -38,7 +38,7 @@ public class ModBus implements Runnable {
     public final static int SLAVE_ADDRESS = 1;
 
     // Serial port baud rate
-    private final static int BAUD_RATE = 19200;
+    private final static int BAUD_RATE = 9600;
 
     private Crixus instance = null;
 
@@ -267,7 +267,7 @@ public class ModBus implements Runnable {
                 //lee comandos
                 Crixus.getInstance().getRead().readRegisters();
                 estados = readDiscreteInputTest(SLAVE_ADDRESS, i, i0);
-                System.out.println("BLOQUE QUE LEE ESTADOS DE LOS PISTONES");
+                //System.out.println("BLOQUE QUE LEE ESTADOS DE LOS PISTONES");
             }
         }
     }

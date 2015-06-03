@@ -1,0 +1,14 @@
+ANTES
+
+B_MAS ------- O:0/3
+C_MAS ------- O:0/5
+D_MAS ------- O:0/7
+
+NUEVOS
+
+B_MAS ------- O:0/8
+C_MAS ------- O:0/9
+D_MAS -------- O:0/10
+
+
+http://literature.rockwellautomation.com/idc/groups/literature/documents/um/1764-um001_-en-p.pdf

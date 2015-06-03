@@ -5,6 +5,7 @@
  */
 package automatizacionavanzada;
 
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
@@ -64,7 +65,12 @@ public class ReadOnlyCommands {
                                 @Override
                                 public void run() {
                                     try {
-                                        //Crixus.getInstance().getGemma().piston2.setVastagoState(newValue);
+                                        if (!oldValue && newValue) { // cambiar a property
+                                           
+                                            Crixus.getInstance().getDashBoiardInstance().
+                                                    updateStatistics(
+                                                            25);
+                                        }
                                     } catch (Exception e) {
 
                                     }
