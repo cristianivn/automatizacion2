@@ -39,12 +39,12 @@ public class Crixus {
 
         System.out.println("Arrancando hilos......");
         
-        command = new WritableCommands();
+        /*command = new WritableCommands();
         read = new ReadOnlyCommands();
 
         modbus = new ModBus();
         arya = new Thread(modbus);
-        arya.start();
+        arya.start();*/
 
         tcpServer = new MultiThreadedServer(9000);
         new Thread(tcpServer).start();

@@ -144,6 +144,10 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private void setQuantity(ActionEvent event) {
+        cualcomm();
+    }
+
+    public void cualcomm() {
         try {
             int amount = Integer.parseInt(cantidad.getText());
             number = amount;
@@ -155,6 +159,10 @@ public class DashBoardController implements Initializable {
         }
     }
 
+    public void updateText(String can){
+       cantidad.setText(can);
+    }
+    
     @FXML
     private void start(ActionEvent event) {
         startProccess();

@@ -39,7 +39,8 @@ public class ModBus implements Runnable {
 
     // Serial port baud rate
     private final static int BAUD_RATE = 19200;
-
+    
+    private final static String comPort="COM11";
     private Crixus instance = null;
 
     public static boolean writeOrRead = false;
@@ -59,7 +60,7 @@ public class ModBus implements Runnable {
         SerialParameters serialParameters = new SerialParameters();
         // Set the serial port of the MODBUS communication serialParameters
         serialParameters.
-                setCommPortId("COM10");
+                setCommPortId(comPort);
         // Set no parity
 
         serialParameters.setParity(0);

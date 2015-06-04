@@ -96,6 +96,17 @@ public class WorkerRunnable implements Runnable {
                     case "test ultrasonic":
                         Crixus.getInstance().getDashBoiardInstance().testUltra();
                         break;
+                    default:
+
+                        if (current.contains("quan")) {
+                            System.out.println("extrae");
+                            System.out.println(current.substring(4));
+                            Crixus.getInstance().getDashBoiardInstance().setNumber(Integer.parseInt(current.substring(4)));
+                            Crixus.getInstance().getDashBoiardInstance().updateText(current.substring(4));
+                            Crixus.getInstance().getDashBoiardInstance().cualcomm();
+
+                        }
+                        break;
                 }
             }
         } catch (IOException | NumberFormatException e) {
