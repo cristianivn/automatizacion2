@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Drowizard</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="labelConnect">Conectar</string>
+    <string name="color1">color 1</string>
+    <string name="color2">color 2</string>
+    <string name="setCol">SET COLOR</string>
+    <string name="start">START</string>
+    <string name="test">TEST</string>
+</resources>
