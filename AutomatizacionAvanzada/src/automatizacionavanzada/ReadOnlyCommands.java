@@ -8,10 +8,16 @@ package automatizacionavanzada;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.util.Duration;
 
 /**
  *
@@ -19,7 +25,8 @@ import javafx.beans.value.ObservableValue;
  */
 public class ReadOnlyCommands {
 
-    public SimpleBooleanProperty[] states = new SimpleBooleanProperty[2];
+    public SimpleBooleanProperty[] states = new SimpleBooleanProperty[4];
+    private SimpleDoubleProperty time = new SimpleDoubleProperty(5);
 
     public ReadOnlyCommands() {
         for (int i = 0; i < states.length; i++) {
@@ -77,6 +84,61 @@ public class ReadOnlyCommands {
                                 }
                             });
                             break;
+                        case 2:
+                            //     System.out.println("LISTENER " + lis);
+                            Platform.runLater(new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    try {
+                                        if (!oldValue && newValue) { // cambiar a property
+
+                                            System.out.println("lado b");
+                                            Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(time.getValue()), new EventHandler<ActionEvent>() {
+
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    System.out.println("activar transicion!!: " + time.getValue());
+                                                    // LEER SENSOR Y GRAFICAR
+                                                    Crixus.getInstance().getModbus().writeCommandThread(WritableCommands.END_READ, Boolean.TRUE);
+                                                }
+                                            }));
+                                            fiveSecondsWonder.setCycleCount(1);
+                                            fiveSecondsWonder.play();
+                                        }
+                                    } catch (Exception e) {
+
+                                    }
+                                }
+                            });
+                            break;
+                        case 3:
+                            //     System.out.println("LISTENER " + lis);
+                            Platform.runLater(new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    try {
+                                        if (!oldValue && newValue) { // cambiar a property
+
+                                            System.out.println("lado c");
+                                            Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(time.getValue()), new EventHandler<ActionEvent>() {
+
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    System.out.println("activar transicion!!: " + time.getValue());
+                                                    Crixus.getInstance().getModbus().writeCommandThread(WritableCommands.END_READ, Boolean.TRUE);
+                                                }
+                                            }));
+                                            fiveSecondsWonder.setCycleCount(1);
+                                            fiveSecondsWonder.play();
+                                        }
+                                    } catch (Exception e) {
+
+                                    }
+                                }
+                            });
+                            break;
                     }
                 }
 
@@ -89,7 +151,7 @@ public class ReadOnlyCommands {
         try {
             if (Crixus.getInstance().getModbus().getMaster().isInitialized()) {
                 boolean[] vals = Crixus.getInstance().getModbus().readDiscrete(
-                        ModBus.SLAVE_ADDRESS, 0, 1);
+                        ModBus.SLAVE_ADDRESS, 0, 3);
                 if (vals.length > 0) {
                     for (int i = 0; i < states.length; i++) {
                         if (!(vals[i] && states[i].getValue())) {
@@ -106,6 +168,10 @@ public class ReadOnlyCommands {
 
         }
 
+    }
+
+    public SimpleDoubleProperty getTime() {
+        return time;
     }
 
 }

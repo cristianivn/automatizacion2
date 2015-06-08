@@ -24,6 +24,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
@@ -65,6 +66,8 @@ public class DashBoardController implements Initializable {
     private Text boxCount;
     @FXML
     private VBox chartContainer;
+    @FXML
+    private Slider silverSurfer;
 
     final ToggleGroup group = new ToggleGroup();
     private int number = 0;
@@ -83,6 +86,7 @@ public class DashBoardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        silverSurfer.valueProperty().bindBidirectional(Crixus.getInstance().getRead().getTime());
         setUpGraph(Screen.getPrimary().getVisualBounds());
         Crixus.getInstance().setDashBoardInstance(this);
         boxCount.setText("Procesadas: " + String.valueOf(currentAmount));
