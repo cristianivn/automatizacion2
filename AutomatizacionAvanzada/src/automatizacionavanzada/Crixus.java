@@ -53,9 +53,9 @@ public class Crixus {
         //Thread blue = new Thread(blueServer);
         //blue.start();
         
-        //colorSensor = new ColorSensor();
-        //Thread sensor = new Thread(colorSensor);
-        //sensor.start();
+        colorSensor = new ColorSensor();
+        Thread sensor = new Thread(colorSensor);
+        sensor.start();
     }
 
     public static Crixus getInstance() {

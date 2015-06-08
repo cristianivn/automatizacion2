@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -80,6 +81,7 @@ public class DashBoardController implements Initializable {
 
     private Stopwatch stopwatch;
     LineChart chart;
+    private static int x = 0;
 
     /**
      * Initializes the controller class.
@@ -163,10 +165,10 @@ public class DashBoardController implements Initializable {
         }
     }
 
-    public void updateText(String can){
-       cantidad.setText(can);
+    public void updateText(String can) {
+        cantidad.setText(can);
     }
-    
+
     @FXML
     private void start(ActionEvent event) {
         startProccess();
@@ -174,20 +176,27 @@ public class DashBoardController implements Initializable {
     }
 
     public void startProccess() {
-        if (number != 0 && group.getSelectedToggle() != null) {
-            if (estadoStart == false) {
-                estadoStart = true;
-                stopwatch = Stopwatch.createStarted();
-                System.out.println("start proccess");
-                Crixus.getInstance().getModbus().writeCommandThread(WritableCommands.START, Boolean.TRUE);
-                startBtn.setText("STOP");
-                series1.getData().clear();
-            } else {
-                stopProcces();
+        Platform.runLater(new Runnable() {
+
+            @Override
+            public void run() {
+                if (number != 0 && group.getSelectedToggle() != null) {
+                    if (estadoStart == false) {
+                        estadoStart = true;
+                        stopwatch = Stopwatch.createStarted();
+                        System.out.println("start proccess");
+                        Crixus.getInstance().getModbus().writeCommandThread(WritableCommands.START, Boolean.TRUE);
+                        startBtn.setText("STOP");
+                        //series1.getData().clear();
+                    } else {
+                        stopProcces();
+                    }
+                } else {
+                    System.out.println("inserta datos");
+                }
             }
-        } else {
-            System.out.println("inserta datos");
-        }
+        });
+
     }
 
     public void stopProcces() {
@@ -216,7 +225,7 @@ public class DashBoardController implements Initializable {
 
     private void setUpGraph(Rectangle2D scrsetUpGrapheen) {
         // new NumberAxis(label,inicio,maximoValor,intervalos)
-        NumberAxis xAxis = new NumberAxis("Tiempo", 0, 50, 5);
+        NumberAxis xAxis = new NumberAxis("#Numero", 0, 50, 5);
         NumberAxis yAxis = new NumberAxis("Cantidad", 1, 60, 10);
 
         series1 = new XYChart.Series<>();
@@ -237,7 +246,8 @@ public class DashBoardController implements Initializable {
         // timeline.pause();
         //System.out.println("UPDATE CHART: " + stopwatch.elapsed(TimeUnit.SECONDS) + " VALOR: " + value);
         // series1.getData().add(new LineChart.Data<Integer, Integer>(dataCollected.size(), (int) (stopwatch.elapsed(TimeUnit.SECONDS))));
-        series1.getData().add(new LineChart.Data<Integer, Integer>((int) stopwatch.elapsed(TimeUnit.SECONDS), (int) value));
+        x = x + 2;
+        series1.getData().add(new LineChart.Data<Integer, Integer>(x, (int) value));
 
         //stopwatch.start();
     }

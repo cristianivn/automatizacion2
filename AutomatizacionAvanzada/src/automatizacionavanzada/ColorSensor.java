@@ -36,7 +36,7 @@ public class ColorSensor implements Runnable {
 
         try {
 
-            portId = CommPortIdentifier.getPortIdentifier("COM11");
+            portId = CommPortIdentifier.getPortIdentifier("COM12");
             serialPort = (SerialPort) portId.open("hello", TIME_OUT);
             serialPort.setSerialPortParams(DATA_RATE, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 
@@ -73,7 +73,7 @@ public class ColorSensor implements Runnable {
     private void readSerial() {
         try {
             current = reader2.readLine();
-            System.out.println(current);
+            //System.out.println(current);
         } catch (IOException | NumberFormatException e) {
             //  System.err.println("communication not established");
         }

@@ -73,10 +73,10 @@ public class ReadOnlyCommands {
                                 public void run() {
                                     try {
                                         if (!oldValue && newValue) { // cambiar a property
-                                           
-                                            Crixus.getInstance().getDashBoiardInstance().
-                                                    updateStatistics(
-                                                            25);
+
+                                            //Crixus.getInstance().getDashBoiardInstance().
+                                            //        updateStatistics(
+                                            //                25);
                                         }
                                     } catch (Exception e) {
 
@@ -100,6 +100,9 @@ public class ReadOnlyCommands {
                                                 public void handle(ActionEvent event) {
                                                     System.out.println("activar transicion!!: " + time.getValue());
                                                     // LEER SENSOR Y GRAFICAR
+                                                    Crixus.getInstance().getDashBoiardInstance().
+                                                            updateStatistics(
+                                                                    Integer.parseInt(Crixus.getInstance().getColorSensor().getCurrent()));
                                                     Crixus.getInstance().getModbus().writeCommandThread(WritableCommands.END_READ, Boolean.TRUE);
                                                 }
                                             }));
@@ -127,6 +130,10 @@ public class ReadOnlyCommands {
                                                 @Override
                                                 public void handle(ActionEvent event) {
                                                     System.out.println("activar transicion!!: " + time.getValue());
+                                                    // LEER SENSOR Y GRAFICAR
+                                                    Crixus.getInstance().getDashBoiardInstance().
+                                                            updateStatistics(
+                                                                    Integer.parseInt(Crixus.getInstance().getColorSensor().getCurrent()));
                                                     Crixus.getInstance().getModbus().writeCommandThread(WritableCommands.END_READ, Boolean.TRUE);
                                                 }
                                             }));
